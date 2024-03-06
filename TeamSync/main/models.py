@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 class ProjectList(models.Model):
    fkey = models.ForeignKey(User, on_delete=models.CASCADE)
-   name = models.CharField(max_length = 100)
+   project_name = models.CharField(max_length = 100)
+   project_code = models.CharField(max_length = 100, null = True)
    status =  models.BooleanField(default = False)
-   name1 = models.CharField(max_length = 100 , null = True)
+   
 
    @property   
    def CreaterID(self):
@@ -15,7 +15,7 @@ class ProjectList(models.Model):
        return self.fkey.userId
   
    def __str__(self):
-       return self.name1
+       return self.project_name
 
 
 class Project_History(models.Model):
