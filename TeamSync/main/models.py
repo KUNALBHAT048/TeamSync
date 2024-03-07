@@ -1,7 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    techstack = models.CharField(max_length=50)
+
+
 class ProjectList(models.Model):
-   fkey = models.ForeignKey(User, on_delete=models.CASCADE)
+   fkey = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
    project_name = models.CharField(max_length = 100)
    project_code = models.CharField(max_length = 100, null = True)
    status =  models.BooleanField(default = False)
@@ -19,7 +24,7 @@ class ProjectList(models.Model):
 
 
 class Project_History(models.Model):
-   contributorId = models.ForeignKey(User, on_delete=models.CASCADE)
+   contributorId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
    project_name = models.CharField(max_length=255)
    description = models.TextField()
 
@@ -29,7 +34,7 @@ class Project_History(models.Model):
 
 
 class Chat(models.Model):
-   fkey = models.ForeignKey(User, on_delete=models.CASCADE)
+   fkey = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
    chatId = models.CharField(max_length = 10)
    message = models.CharField(max_length = 1000, null = True)
 

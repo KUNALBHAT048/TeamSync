@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'main.CustomUser'  # Replace 'yourappname' with your actual app name
 
 # Application definition
 
