@@ -34,4 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function closeModal(){
         modal.style.display = "none";
     }
+
+    function created(){
+        alert("Project Created Successfully");
+    }
+    
 });
